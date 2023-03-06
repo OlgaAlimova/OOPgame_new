@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Разбойник
  */
-public class Outlaw extends Unit {
+public class Outlaw extends Warrior {
 
 
     public Outlaw(String name, int x, int y) {
@@ -15,15 +15,10 @@ public class Outlaw extends Unit {
 
 
 
-
-
     @Override
     public String getInfo() {
         return "Разбойник";
     }
 
-    @Override
-    public String toString() {
-        return String.format("Разбойник: %4s  |  HP: %d  |  Speed: %d  |  ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y, this.state);
-    }
+
 }

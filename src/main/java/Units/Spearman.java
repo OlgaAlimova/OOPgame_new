@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Кпоейщики
  */
-public class Spearman extends Unit{
+public class Spearman extends Warrior{
 
 
     public Spearman(String name, int x, int y) {
@@ -14,18 +14,11 @@ public class Spearman extends Unit{
     }
 
 
-    @Override
-    public void step(ArrayList<Unit> t1, ArrayList<Unit> t2) {
-
-    }
 
     @Override
     public String getInfo() {
         return "Копейщик";
     }
 
-    @Override
-    public String toString() {
-        return String.format("Копейщик: %1s  |  HP: %d  |  Speed: %d  |  ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y, this.state);
-    }
+
 }

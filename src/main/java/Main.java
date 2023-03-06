@@ -9,14 +9,21 @@ import java.util.Scanner;
 public class Main {
 
     static final int UNITS = 10;
+    public static ArrayList<Unit> holyTeam = new ArrayList<>();
+    public static ArrayList<Unit> darkTeam = new ArrayList<>();
+    public static ArrayList<Unit> allTeam = new ArrayList<>();
+    static int dieHolyTeam = 0;
+    static int dieDarkTeam = 0;
 
     public static void main(String[] args) {
 
 
-        ArrayList<Unit> holyTeam = new ArrayList<>();
-        ArrayList<Unit> darkTeam = new ArrayList<>();
-        ArrayList<Unit> allTeam = new ArrayList<>();
+
+
+
         Scanner user_input = new Scanner(System.in);
+        System.out.print("Press Enter to begin.");
+        user_input.nextLine();
         createTeam(holyTeam, 0, 1);
         createTeam(darkTeam, 3, 10);
         allTeam.addAll(holyTeam);
@@ -24,15 +31,27 @@ public class Main {
         sortedTeam(allTeam);
 
 
-        System.out.println(allTeam);
-
         while (true){
+            View.view();
+            user_input.nextLine();
             for (Unit human: allTeam) {
                 if ( holyTeam.contains(human)) human.step(holyTeam, darkTeam);
                 else human.step(darkTeam, holyTeam);
             }
-            user_input.nextLine();
-            System.out.println(allTeam);
+            for (Unit human: holyTeam) {
+                if (human.getState() == "Die") dieHolyTeam++;
+            }
+            if (dieHolyTeam == 10){
+                System.out.println("******************************************Green winner!******************************************");
+                break;
+            } else dieHolyTeam = 0;
+            for (Unit human: darkTeam) {
+                if (human.getState() == "Die") dieDarkTeam++;
+            }
+            if (dieDarkTeam == 10){
+                System.out.println("******************************************Blue winner!******************************************");
+                break;
+            } else dieDarkTeam = 0;
         }
 
 

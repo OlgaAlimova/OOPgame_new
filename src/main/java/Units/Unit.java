@@ -11,7 +11,7 @@ public abstract class Unit implements GameInterface {
     protected String name;
     protected int hp;
     protected int speed, attack;
-    protected int maxHp, def, damegeMin, damegeMax;
+    protected int maxHp, def, damageMin, damageMax;
 
     protected String state;
 
@@ -24,8 +24,8 @@ public abstract class Unit implements GameInterface {
         this.maxHp = maxHp;
         this.hp = maxHp;
         this.def = def;
-        this.damegeMin = damegeMin;
-        this.damegeMax = damegeMax;
+        this.damageMin = damegeMin;
+        this.damageMax = damegeMax;
         pos = new Vector2D(x, y);
         this.attack = attack;
         state = "Stand";
@@ -37,7 +37,12 @@ public abstract class Unit implements GameInterface {
 
     @Override
     public String toString() {
-        return String.format("Имя: %3s | HP: %2d  |  Speed: %d,  | Def: %d,  | (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.def, this.pos.x, this.pos.y, this.state);
+        return "👷" +
+                " H:" + Math.round(hp) +
+                " D:" + def +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((damageMin+damageMax)/2)) + " " +
+                state;
     }
 
 
@@ -56,9 +61,7 @@ public abstract class Unit implements GameInterface {
     }
 
     @Override
-    public void step(ArrayList<Unit> t1, ArrayList<Unit> t2) {
-
-    }
+    public void step(ArrayList<Unit> t1, ArrayList<Unit> t2) { }
 
     public int findNearest(ArrayList<Unit> team) {
         double min = 100;
@@ -78,7 +81,15 @@ public abstract class Unit implements GameInterface {
         if (hp < 0){
             System.out.println(getInfo() + " " + name + " умер");
             state = "Die";
+            hp = 0;
         }
     }
 
+    public int[] getPos() {
+        return new int[]{pos.x, pos.y};
+    }
+
+    public String getState() {
+        return state;
+    }
 }

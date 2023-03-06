@@ -11,11 +11,8 @@ public class Mag extends Magic{
 
     @Override
     public String getInfo() {
-        return "Колдун";
+        return "Волшебник";
     }
 
-    @Override
-    public String toString() {
-        return String.format("Колдун: %s  |  HP: %d  |  Speed: %d  |  ATK: (%d)  |  DEF: %d  |  (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.damegeMin, this.def, this.pos.x, this.pos.y, this.state);
-    }
+
 }

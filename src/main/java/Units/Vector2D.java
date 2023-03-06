@@ -15,5 +15,13 @@ public class Vector2D {
         return Math.sqrt(Math.pow(x - oponent.x,2) + Math.pow(y - oponent.y,2));
     }
 
+    protected boolean onTheLeft(Vector2D oponent){
+        return (x < oponent.x)? false: true;
+    }
+
+    protected boolean onTheTop(Vector2D oponent){
+        return (y > oponent.y)? false: true;
+    }
+
 
 }

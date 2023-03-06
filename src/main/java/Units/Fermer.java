@@ -18,6 +18,7 @@ public class Fermer extends Unit{
 
     @Override
     public void step(ArrayList<Unit> t1, ArrayList<Unit> t2) {
+        if (state.equals("Die")) {hp = 0; return;}
         if (!state.equals("Die")) state = "Stand";
         System.out.println("Фермер " + name + " освободился");
     }
@@ -27,8 +28,5 @@ public class Fermer extends Unit{
         return "Фермер";
     }
 
-    @Override
-    public String toString() {
-        return String.format("Фермер: %s  |  HP: %d  |  Speed: %d  |  ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d) | Status: %s\n", this.name, this.hp, this.speed, this.damegeMin, this.damegeMax, this.def, this.pos.x, this.pos.y, this.state);
-    }
+
 }
